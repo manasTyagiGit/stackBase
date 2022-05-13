@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+* The assumption is that there are atleast 2 towers
+*/
+
 vector <int> findMaxLeft (vector <int> input)
 {    
     vector <int> maxLeft;

@@ -64,7 +64,7 @@ int main (void)
     {        
         width[i] = NSRIndex[i] - NSLIndex[i] - 1;
         area[i]  = width[i] * input[i];
-        //printf ("\n%d :: %d", i, area[i]);        //DEBUG OUTPUT
+       
         if (area[i] > maxArea)
         {
             maxArea = area[i];
