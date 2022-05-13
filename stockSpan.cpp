@@ -8,27 +8,11 @@ void calculateNGL (vector <int>& input, vector <int>& output, int n)
     stack <pair <int, int>> s;          
 
     for (i = 0; i < n; i++)
-    {
-        if (s.empty())
-        {                   
-            output.push_back (-1);
-        }
-
-        else if (s.top().first > input[i])
-        {
-            output.push_back (s.top().second);
-        }
-
-        else
-        {
-            while (!s.empty() && s.top().first <= input[i])
-            {
-                s.pop();
-            }            
-
-            if (s.empty())              output.push_back (-1);
-            else                        output.push_back (s.top().second);
-        }
+    {        
+        while (!s.empty() && s.top().first <= input[i])             s.pop();
+                       
+        if (s.empty())                                              output.push_back (-1);
+        else                                                        output.push_back (s.top().second);   
 
         s.push ({input[i], i});
     }  
