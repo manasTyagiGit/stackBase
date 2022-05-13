@@ -8,40 +8,13 @@ void calculateNSLIndex (vector <int>& input, vector <int>& NSLIndex, int n)
 
     for (i = 0; i < n; i++)
     {
-        if (s.empty())
-        {
-            NSLIndex.push_back (-1);
-        }
+        while (!s.empty() && s.top().first >= input[i])                             s.pop();           
 
-        else if (s.top().first < input[i])
-        {
-            NSLIndex.push_back (s.top().second);
-        }
-
-        else
-        {
-            while (!s.empty() && s.top().first >= input[i])
-            {
-                s.pop();
-            }
-
-            if (s.empty())
-            {
-                NSLIndex.push_back (-1); 
-            }
-            else
-            {
-                NSLIndex.push_back (s.top().second);   
-            }
-        }
+        if (s.empty())                                                              NSLIndex.push_back (-1); 
+        else                                                                        NSLIndex.push_back (s.top().second);        
+        
         s.push ({input[i], i});
     }
-
-    /*for (i = 0; i < n; i++)
-    {
-        cout << NSLIndex[i] << "\t";
-    }
-    cout << endl;*/
 }
 
 void calculateNSRIndex (vector <int>& input, vector <int>& NSRIndex, int n)
@@ -51,44 +24,15 @@ void calculateNSRIndex (vector <int>& input, vector <int>& NSRIndex, int n)
 
     for (i = n - 1; i >= 0; i--)
     {
-        if (s.empty())
-        {
-            NSRIndex.push_back (-1);
-        }
-
-        else if (s.top().first < input[i])
-        {
-            NSRIndex.push_back (s.top().second);
-        }
-
-        else
-        {
-            while (!s.empty() && s.top().first >= input[i])
-            {
-                s.pop();
-            }
-
-            if (s.empty())
-            {
-                NSRIndex.push_back (-1); 
-            }
-            else
-            {
-                NSRIndex.push_back (s.top().second);   
-            }
-        }
+        while (!s.empty() && s.top().first >= input[i])                             s.pop();
+            
+        if (s.empty())                                                              NSRIndex.push_back (-1); 
+        else                                                                        NSRIndex.push_back (s.top().second);   
 
         s.push ({input[i], i});         
     }
     
     reverse (NSRIndex.begin(), NSRIndex.end()); 
-
-    /*for (i = 0; i < n; i++)
-    {
-        cout << NSRIndex[i] << "\t";
-    }
-    cout << endl;*/
-
 }
 
 int main (void)
