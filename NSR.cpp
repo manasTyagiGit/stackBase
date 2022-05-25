@@ -8,20 +8,11 @@ void calculateNSR (vector <int>& input, vector <int>& output, int n)
     int i = 0;
 
     for (i = n - 1; i >= 0; i--)
-    {
+    {        
+        while (!s.empty() && s.top() >= input[i])       s.pop();            
+
         if (s.empty())                                  output.push_back (-1);
-        else if (s.top() < input[i])                    output.push_back (s.top());
-
-        else
-        {
-            while (!s.empty() && s.top() >= input[i])
-            {   
-                s.pop();
-            }
-
-            if (s.empty())                              output.push_back (-1);
-            else                                        output.push_back (s.top());
-        }       
+        else                                            output.push_back (s.top());             
 
         s.push (input[i]);
     }
